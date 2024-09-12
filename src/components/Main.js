@@ -13,7 +13,7 @@ export default class Main extends Component {
             'Ler a Bíblia',
             'Estudar Espanhol',
             'Fazer alongamentos',
-            'Fazer Barras',
+            'Fazer Barra',
             'Elevação de pernas na barra'
         ]
     };
@@ -23,15 +23,31 @@ export default class Main extends Component {
             novaTarefa: e.target.value
         });
     }
+
+    handleSubmit = (e) =>{
+        e.preventDefault();
+        const { tarefas } = this.state;
+        let { novaTarefa } = this.state;
+        novaTarefa = novaTarefa.trim();
+
+        if(tarefas.indexOf(novaTarefa) !== -1) return;
+
+        const novasTarefas = [...tarefas];
+
+        this.setState({
+            tarefas: [...novasTarefas, novaTarefa],
+        });
+    }
+
     render(){
-        const { novaTarefa, tarefas } = this.state;
+        const { tarefas } = this.state;
 
         return (
             <main>
                 <section className='main-content'>
-                    <h1>{ (!novaTarefa && 'Lista de Tarefas') || (novaTarefa)}</h1>
+                    <h1>Lista de Tarefas</h1>
 
-                    <form action='#' className='form'>
+                    <form onSubmit={this.handleSubmit} action='#' className='form'>
                         <input onChange={this.handleChange} type='text' />
                         <button type='submit'><FaPlus /></button>
                     </form>
