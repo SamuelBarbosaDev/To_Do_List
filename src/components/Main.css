@@ -1,0 +1,64 @@
+/* Colors */
+:root{
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+    --color-1: #1C5C8C;
+    --color-2: #26465E;
+    --color-3: #0071C5;
+    --color-4: #1F2A33;
+}
+
+/* Gaps */
+:root{
+    --gap-default: 3rem;
+    --gap-small: 1.5rem;
+}
+
+/* GLOBAL */
+:root{
+    font-family: sans-serif;
+    font-size: 62.5%;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: sans-serif;
+    font-size: 1.6rem;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style: none;
+}
+
+/* MAIN */
+main{
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    min-height: 100vh;
+    background-color: var(--color-2);
+}
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: var(--gap-default);
+    min-height: 80rem;
+    width: 60rem;
+    border-radius: 1.5rem;
+    background-color: var(--color-white);
+}
