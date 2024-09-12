@@ -1,11 +1,13 @@
 /* Colors */
 :root{
-    --color-white: #FFFFFF;
-    --color-black: #000000;
     --color-1: #1C5C8C;
     --color-2: #26465E;
     --color-3: #0071C5;
     --color-4: #1F2A33;
+    --color-5: #C62C28;
+    --color-6: #26465e11;
+    --color-white: #FFFFFF;
+    --color-black: #000000;
 }
 
 /* Gaps */
@@ -16,8 +18,8 @@
 
 /* GLOBAL */
 :root{
-    font-family: sans-serif;
     font-size: 62.5%;
+    font-family: sans-serif;
 }
 
 *{
@@ -30,8 +32,8 @@ html{
 }
 
 body{
-    font-family: sans-serif;
     font-size: 1.6rem;
+    font-family: sans-serif;
 }
 
 a{
@@ -44,21 +46,93 @@ ul{
 
 /* MAIN */
 main{
-    display: flex;
-    align-items: center;
     width: 100vw;
+    display: flex;
     min-height: 100vh;
+    align-items: center;
     background-color: var(--color-2);
 }
 
 .main-content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
-    padding: var(--gap-default);
-    min-height: 80rem;
     width: 60rem;
+    display: flex;
+    margin: 0 auto;
+    min-height: 80rem;
+    align-items: center;
     border-radius: 1.5rem;
+    flex-direction: column;
+    padding: var(--gap-default);
     background-color: var(--color-white);
+}
+
+/* FORM */
+.form{
+    display: flex;
+    min-width: 40rem;
+    min-height: 20rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.form > input[type=text]{
+    font-size: 2rem;
+    padding: 0 2rem;
+    cursor: pointer;
+    min-height: 5rem;
+    border: solid 0.1rem var(--color-2);
+}
+
+.form > button[type=submit]{
+    display: flex;
+    cursor: pointer;
+    min-width: 5rem;
+    min-height: 5rem;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    background-color: var(--color-2);
+    border: solid 0.3rem var(--color-2);
+}
+
+.form > button[type=submit]:hover{
+    color: var(--color-2);
+    background-color: var(--color-white);
+}
+
+/* Tasks */
+.tasks{
+    min-width: 40rem;
+
+}
+.tasks > li{
+    display: flex;
+    padding: 0 2rem;
+    border-bottom: solid 0.1rem var(--color-2);
+    min-height: 4rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tasks > li:hover{
+    background-color: var(--color-6);
+}
+
+.task-buttons{
+    display: flex;
+    justify-content: space-between;
+    font-size: 2rem;
+}
+
+.task-button-edit,
+.task-button-delete{
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+.task-button-edit{
+    color: var(--color-2);
+}
+
+.task-button-delete{
+    color: var(--color-5);
 }
