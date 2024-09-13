@@ -15,8 +15,25 @@ export default class Main extends Component {
             'Fazer alongamentos',
             'Fazer Barra',
             'Elevação de pernas na barra'
-        ]
+        ],
+        index: -1
     };
+
+    componentDidMount(){
+        const tarefas = JSON.parse(localStorage.getItem('tarefas'))
+
+        if(!tarefas) return;
+
+        this.setState({ tarefas });
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        const { tarefas } = this.state;
+
+        if (tarefas === prevState.tarefas) return;
+
+        localStorage.setItem('tarefas', JSON.stringify(tarefas));
+    }
 
     handleChange = (e) =>{
         this.setState({
@@ -26,7 +43,7 @@ export default class Main extends Component {
 
     handleSubmit = (e) =>{
         e.preventDefault();
-        const { tarefas } = this.state;
+        const { tarefas, index } = this.state;
         let { novaTarefa } = this.state;
         novaTarefa = novaTarefa.trim();
 
@@ -34,13 +51,29 @@ export default class Main extends Component {
 
         const novasTarefas = [...tarefas];
 
-        this.setState({
-            tarefas: [...novasTarefas, novaTarefa],
-        });
+        if(index === -1){
+            this.setState({
+                tarefas: [...novasTarefas, novaTarefa],
+                novaTarefa: '',
+            });
+        }
+        else{
+            novasTarefas[index] = novaTarefa;
+
+            this.setState({
+                tarefas: [ ...novasTarefas ],
+                index: -1,
+            })
+        }
     }
 
     handleEdit = (e, index) => {
-        
+        const { tarefas } = this.state;
+
+        this.setState({
+            index,
+            novaTarefa: tarefas[index]
+        })
     }
 
     handleDelete = (e, index) => {
@@ -55,7 +88,7 @@ export default class Main extends Component {
     }
 
     render(){
-        const { tarefas } = this.state;
+        const { novaTarefa, tarefas } = this.state;
 
         return (
             <main>
@@ -63,7 +96,7 @@ export default class Main extends Component {
                     <h1>Lista de Tarefas</h1>
 
                     <form onSubmit={this.handleSubmit} action='#' className='form'>
-                        <input onChange={this.handleChange} type='text' />
+                        <input onChange={this.handleChange} type='text' value={novaTarefa}/>
                         <button type='submit'><FaPlus /></button>
                     </form>
                     <ul className='tasks'>
