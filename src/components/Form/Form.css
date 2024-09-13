@@ -1,0 +1,35 @@
+@import url('../Main.css');
+
+/* FORM */
+.form {
+    display: flex;
+    min-width: 40rem;
+    min-height: 20rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.form > input[type=text]{
+    font-size: 2rem;
+    padding: 0 2rem;
+    cursor: pointer;
+    min-height: 5rem;
+    border: solid 0.1rem var(--color-2);
+}
+
+.form > button[type=submit]{
+    display: flex;
+    cursor: pointer;
+    min-width: 5rem;
+    min-height: 5rem;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    background-color: var(--color-2);
+    border: solid 0.3rem var(--color-2);
+}
+
+.form > button[type=submit]:hover{
+    color: var(--color-2);
+    background-color: var(--color-white);
+}

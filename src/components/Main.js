@@ -1,8 +1,7 @@
 import './Main.css'
+import Form from './Form'
+import Task from './Task'
 import React, { Component } from 'react';
-import { FaPlus } from 'react-icons/fa'
-import { FaEdit, FaWindowClose } from 'react-icons/fa'
-
 
 export default class Main extends Component {
     state = {
@@ -94,28 +93,16 @@ export default class Main extends Component {
             <main>
                 <section className='main-content'>
                     <h1>Lista de Tarefas</h1>
-
-                    <form onSubmit={this.handleSubmit} action='#' className='form'>
-                        <input onChange={this.handleChange} type='text' value={novaTarefa}/>
-                        <button type='submit'><FaPlus /></button>
-                    </form>
-                    <ul className='tasks'>
-                        {tarefas.map((tarefa, index) => (
-                            <li key={tarefa}>
-                                {tarefa}
-                                <div className='task-buttons'>
-                                    <FaEdit
-                                    className='task-button-edit'
-                                    onClick={(e) => this.handleEdit(e, index)}
-                                    />
-                                    <FaWindowClose
-                                    className='task-button-delete'
-                                    onClick={(e) => this.handleDelete(e, index)}
-                                    />
-                                </div>
-                            </li>
-                        )) }
-                    </ul>
+                    <Form
+                        handleSubmit={this.handleSubmit}
+                        handleChange={this.handleChange}
+                        novaTarefa={novaTarefa}
+                    />
+                    <Task
+                        tarefas={tarefas}
+                        handleEdit={this.handleEdit}
+                        handleDelete={this.handleDelete}
+                    />
                 </section>
             </main>
         )
